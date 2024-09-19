@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enviar Correo</title>
+    <script>
+        async function sendEmail() {
+            // Obtener los valores del formulario
+            const to = document.getElementById("to").value;
+            const subject = document.getElementById("subject").value;
+            const content = document.getElementById("content").value;
+
+            const emailData = {
+                to: to,
+                subject: subject,
+                content: content
+            };
+
+            try {
+                // Realizar la solicitud POST al endpoint
+                const response = await fetch('http://localhost:4004/rest/email/sendEmail', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(emailData)
+                });
+
+                if (response.ok) {
+                    console.log(response);
+                    alert('Correo enviado con éxito');
+                } else {
+                    alert('Error al enviar el correo');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error al conectar con el servidor');
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+    <h1>Enviar Correo</h1>
+
+    <form id="emailForm" onsubmit="event.preventDefault(); sendEmail();">
+        <label for="to">Correo de destino:</label><br>
+        <input type="email" id="to" name="to" required><br><br>
+
+        <label for="subject">Asunto:</label><br>
+        <input type="text" id="subject" name="subject" required><br><br>
+
+        <label for="content">Contenido:</label><br>
+        <textarea id="content" name="content" rows="5" required></textarea><br><br>
+
+        <button type="submit">Enviar</button>
+    </form>
+
+</body>
+
+</html>
