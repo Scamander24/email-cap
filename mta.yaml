@@ -26,6 +26,7 @@ modules:
           srv-url: ${default-url}
     requires:
       - name: email-cap-db
+      - name: credential-store
 
   - name: email-cap-db-deployer
     type: hdb
@@ -40,3 +41,5 @@ resources:
     parameters:
       service: hana
       service-plan: hdi-shared
+  - name: credential-store
+    type: org.cloudfoundry.existing-service

@@ -1,7 +1,7 @@
 const { EmailClient } = require('@azure/communication-email');
 const cds = require('@sap/cds');
 const {readCredential} =  require('./utils/cred_oauthmtls');
-const binding = JSON.parse(process.env.VCAP_SERVICES).credstore[0].credentials;
+const binding = JSON.parse(process.env.VCAP_SERVICES).credstore[0]?.credentials || null;
 module.exports = cds.service.impl(async function () {
 
     this.on('sendEmail', async (req) => {

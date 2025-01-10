@@ -10,7 +10,7 @@
     "@azure/identity": "^4.4.1",
     "@cap-js/hana": "^1",
     "@sap/cds": "^8",
-    "@sap/xsenv": "^5.2.0",
+    "@sap/xsenv": "^5.3.0",
     "express": "^4",
     "node-fetch": "^2.7.0",
     "node-jose": "^2.2.0"
